@@ -16,6 +16,8 @@
 #define SCREEN_TILE_REFRES_W (SCREEN_TILES_W + SCREEN_PAD_LEFT + SCREEN_PAD_RIGHT)
 #define SCREEN_TILE_REFRES_H (SCREEN_TILES_H + SCREEN_PAD_TOP  + SCREEN_PAD_BOTTOM)
 
+#define SCREENWIDTH_MINUS_TARGET 144
+
 extern UINT8 scroll_top_movement_limit = 30;
 extern UINT8 scroll_bottom_movement_limit = 100;
 
@@ -213,7 +215,7 @@ void ScrollSetMap(struct MapInfo* map_data) {
 	scroll_h = scroll_tiles_h << 3;
 	scroll_bank = map_data->bank;
 	if(scroll_target) {
-		scroll_x = scroll_target->x - (SCREENWIDTH >> 1);
+		scroll_x = scroll_target->x - (SCREENWIDTH_MINUS_TARGET >> 1);
 		scroll_y = scroll_target->y - scroll_bottom_movement_limit; //Move the camera to its bottom limit
 		ClampScrollLimits(&scroll_x, &scroll_y);
 	}
@@ -359,7 +361,7 @@ void RefreshScroll() {
 			ny = scroll_target->y - scroll_top_movement_limit;
 		}
 
-		MoveScroll(scroll_target->x - (SCREENWIDTH >> 1), ny);
+		MoveScroll(scroll_target->x - (SCREENWIDTH_MINUS_TARGET >> 1), ny);
 	}
 }
 
