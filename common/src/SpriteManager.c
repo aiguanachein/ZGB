@@ -86,7 +86,7 @@ void SpriteManagerRemove(int idx) {
 	sprite_manager_sprites[sprite_manager_updatables[idx + 1]]->marked_for_removal = 1;
 }
 
-void SpriteManagerRemoveSprite(struct Sprite* sprite) {
+/*void SpriteManagerRemoveSprite(struct Sprite* sprite) {
 	UINT8 i;
 	struct Sprite* s;
 	for(i = 0u; i != sprite_manager_updatables[0]; ++i) {
@@ -96,7 +96,7 @@ void SpriteManagerRemoveSprite(struct Sprite* sprite) {
 			break;
 		}
 	}
-}
+}*/
 
 void SpriteManagerFlushRemove() {
 	//We must remove sprites in inverse order because everytime we remove one the vector shrinks and displaces all elements
